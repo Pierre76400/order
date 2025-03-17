@@ -12,7 +12,9 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        throw new IllegalArgumentException("First name cannot be null");
+        if(firstName == null) {
+            throw new IllegalArgumentException("First name cannot be null");
+        }
     }
 
     public long getIdCustomer() {

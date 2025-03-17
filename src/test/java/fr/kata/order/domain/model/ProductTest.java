@@ -10,7 +10,7 @@ class ProductTest {
     void shouldCreateProductWithValidData() {
         Product product = new Product(1, "Product 1", 10.0);
 
-        assertEquals(1, product.getIdProduct());
+        assertEquals(1, product.getNumProduct());
         assertEquals("Product 1", product.getName());
         assertEquals(10.0, product.getPrice());
     }

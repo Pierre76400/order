@@ -1,6 +1,5 @@
 package fr.kata.order.infrastructure.persistence.repository;
 
-import fr.kata.order.infrastructure.persistence.entity.CustomerEntity;
 import fr.kata.order.infrastructure.persistence.entity.OrderEntity;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -13,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class OrderRepositoryTest {
+class OrderEntityRepositoryTest {
 
 
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderEntityRepository orderRepository;
 
 
     @Test

@@ -25,7 +25,7 @@ public class RefundController {
 
     @PostMapping
     public ResponseEntity createRefund(@PathVariable long numOrder,@RequestParam long numRefund,@RequestParam long numProduct) {
-        refundService.createRefund(numRefund,numOrder,numProduct);
+        refundService.createRefund(numRefund,numOrder,numProduct,null,null);
         return ResponseEntity.created(null).build();
     }
 }

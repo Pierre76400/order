@@ -22,7 +22,7 @@ public class RefundService {
         this.refundRepository = refundRepository;
         this.orderProductRepository = orderProductRepository;
     }
-    public void createRefund(long numRefund,long numOrder, long numProduct){
+    public void createRefund(long numRefund,long numOrder, long numProduct, String description, String picture){
 
         Optional<OrderProduct> orderProduct = orderProductRepository.findOrderProductById(numOrder, numProduct);
 

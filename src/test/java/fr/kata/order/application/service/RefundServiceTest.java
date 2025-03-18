@@ -40,12 +40,30 @@ class RefundServiceTest {
         when(orderProductRepository.findOrderProductById(1000L, 1000L)).thenReturn(Optional.of(new OrderProduct(1000L, product1,2)));
 
 
-        refundService.createRefund(100l,1000L, 1000L);
+        refundService.createRefund(100l,1000L, 1000L,"Produit cassé","preuve.jpg");
     }
 
     @Test
     void shouldThrowExceptionWhenOrderNotFound() {
-        assertThrows(IllegalArgumentException.class, () -> refundService.createRefund(100l,3000L, 2000L));
+        assertThrows(IllegalArgumentException.class, () -> refundService.createRefund(100l,3000L, 2000L,"Produit cassé","preuve.jpg"));
+    }
+
+
+    @Test
+    void shouldThrowExceptionWhenDescriptionIsEmpty() {
+        Product product1 = new Product(1, "Cuillere", 10.0);
+        when(orderProductRepository.findOrderProductById(1000L, 1000L)).thenReturn(Optional.of(new OrderProduct(1000L, product1,2)));
+
+        assertThrows(IllegalArgumentException.class, () -> refundService.createRefund(100l,1000L, 1000L,null,"preuve.jpg"));
+    }
+
+
+    @Test
+    void shouldThrowExceptionWhenPictureIsEmpty() {
+        Product product1 = new Product(1, "Cuillere", 10.0);
+        when(orderProductRepository.findOrderProductById(1000L, 1000L)).thenReturn(Optional.of(new OrderProduct(1000L, product1,2)));
+
+        assertThrows(IllegalArgumentException.class, () -> refundService.createRefund(100l,1000L, 1000L,"Produit cassé",null));
     }
 
 }

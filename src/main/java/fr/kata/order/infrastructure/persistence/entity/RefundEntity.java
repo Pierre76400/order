@@ -11,6 +11,10 @@ public class RefundEntity {
 
     private long numRefund;
 
+    private String picture;
+
+    private String description;
+
     @ManyToOne
     private OrderProductEntity orderProductEntity;
 
@@ -36,5 +40,21 @@ public class RefundEntity {
 
     public void setOrderProductEntity(OrderProductEntity orderProductEntity) {
         this.orderProductEntity = orderProductEntity;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

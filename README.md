@@ -20,7 +20,7 @@ ou lancez la classe principale `OrderApplication`
 
 ## Exemple de requête
 ```bash
-curl -X GET localhost:8080/orders?customerId=1000&orderDate=2022-03-13
+curl -X GET localhost:8080/orders?customerId=1000&orderDate=2024-03-18
 ```
 
 

@@ -8,10 +8,10 @@ class RefundTest {
 
     @Test
     void shouldCreateRefundWithValidData() {
-        Refund refund = new Refund(1, new OrderProduct(new Product(1, "Product 1", 10.0), 1));
+        Refund refund = new Refund(1, 1001l);
 
         assertEquals(1, refund.getNumRefund());
-        assertEquals(1, refund.getOrderProduct().getQuantity());
+        assertEquals(1001l, refund.getIdOrderProduct());
 
     }
 

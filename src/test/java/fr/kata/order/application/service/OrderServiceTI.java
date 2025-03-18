@@ -1,6 +1,9 @@
 package fr.kata.order.application.service;
 
-import fr.kata.order.domain.model.*;
+import fr.kata.order.domain.model.Customer;
+import fr.kata.order.domain.model.Order;
+import fr.kata.order.domain.model.OrderProduct;
+import fr.kata.order.domain.model.Product;
 import fr.kata.order.domain.repository.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,7 +11,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -16,31 +23,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-class OrderServiceTest {
+@SpringBootTest
+class OrderServiceTI {
 
-    @Mock
-    private OrderRepository orderRepository;
-
-    @InjectMocks
+    @Autowired
     private OrderService orderService;
-
-    @BeforeEach
-    void setUp() {
-        orderService = new OrderService(orderRepository);
-    }
 
     @Test
     void shouldReturnOrderHistory() {
-        Date date = new Date(2025, 1, 1);
-
-        Product product1 = new Product(1, "Cuillere", 10.0);
-        OrderProduct orderProduct1 = new OrderProduct(1l,product1, 2);
-
-        Customer customer = new Customer(1, "John", "Doe");
-        Order order = new Order(1, customer, new Date(), Arrays.asList(orderProduct1));
-
-        when(orderRepository.getOrdersByCustomerIdAndDate(1000L, date)).thenReturn(List.of(order));
+        LocalDateTime dateTime =LocalDateTime.of(2024, 4, 18, 0, 0, 0, 0);
+        Date date =  Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
 
         var orderHistory = orderService.getOrderHistory(1000L, date);
 

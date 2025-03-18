@@ -13,7 +13,7 @@ class OrderTest {
     @Test
     void shouldCreateOrderWithValidData() {
         Product product1 = new Product(1, "Product 1", 10.0);
-        OrderProduct orderProduct1 = new OrderProduct(product1, 2);
+        OrderProduct orderProduct1 = new OrderProduct(1l,product1, 2);
 
         Customer customer = new Customer(1, "John", "Doe");
         Order order = new Order(1, customer, new Date(), Arrays.asList(orderProduct1));
@@ -45,8 +45,8 @@ class OrderTest {
         Product product1 = new Product(1, "Product 1", 10.0);
         Product product2 = new Product(2, "Product 2", 20.0);
 
-        OrderProduct orderProduct1 = new OrderProduct(product1, 2);
-        OrderProduct orderProduct2 = new OrderProduct(product2, 1);
+        OrderProduct orderProduct1 = new OrderProduct(1l,product1, 2);
+        OrderProduct orderProduct2 = new OrderProduct(2l,product2, 1);
 
         Customer customer = new Customer(1, "John", "Doe");
 

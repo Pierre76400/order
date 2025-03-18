@@ -1,10 +1,13 @@
 package fr.kata.order.domain.model;
 
 public class OrderProduct {
+
+    private long id;
     private Product product;
     private int quantity;
 
-    public OrderProduct(Product product, int quantity) {
+    public OrderProduct(long id,Product product, int quantity) {
+        this.id = id;
         this.product = product;
         this.quantity = quantity;
 
@@ -29,5 +32,9 @@ public class OrderProduct {
 
     public double getTotalPrice() {
         return product.getPrice() * quantity;
+    }
+
+    public long getId() {
+        return id;
     }
 }

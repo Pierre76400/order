@@ -25,6 +25,8 @@ public class RefundRepositoryImpl implements RefundRepository {
         RefundEntity refundEntity = new RefundEntity();
 
         refundEntity.setNumRefund(refund.getNumRefund());
+        refundEntity.setDescription(refund.getDescription());
+        refundEntity.setPicture(refund.getPicture());
 
         OrderProductEntity orderProductEntity = orderProductEntityRepository.findById(refund.getIdOrderProduct()).get();
         refundEntity.setOrderProductEntity(orderProductEntity);

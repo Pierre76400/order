@@ -30,7 +30,15 @@ public class RefundService {
             throw new IllegalArgumentException("Order product not found");
         }
 
-        Refund refund = new Refund(numRefund, orderProduct.get().getId());
+        if(description == null || description.isEmpty()){
+            throw new IllegalArgumentException("Description is required");
+        }
+
+        if(picture == null || picture.isEmpty()){
+            throw new IllegalArgumentException("Picture is required");
+        }
+
+        Refund refund = new Refund(numRefund, orderProduct.get().getId(), description, picture);
 
         refundRepository.createRefund(refund);
 

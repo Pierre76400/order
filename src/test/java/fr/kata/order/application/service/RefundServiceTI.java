@@ -44,7 +44,6 @@ class RefundServiceTI {
 
         assertEquals("preuve.jpg", refundEntity.getPicture());
         assertEquals("Produit cassé", refundEntity.getDescription());
-
     }
 
     @Test

@@ -8,7 +8,7 @@ class RefundTest {
 
     @Test
     void shouldCreateRefundWithValidData() {
-        Refund refund = new Refund(1, 1001l);
+        Refund refund = new Refund(1, 1001l, "Produit cassé", "preuve.jpg");
 
         assertEquals(1, refund.getNumRefund());
         assertEquals(1001l, refund.getIdOrderProduct());
@@ -17,6 +17,21 @@ class RefundTest {
 
     @Test
     void shouldNotAllowNullOrderProduct() {
-        assertThrows(IllegalArgumentException.class, () -> new Refund(1, null));
+        assertThrows(IllegalArgumentException.class, () -> new Refund(1, null, "Produit cassé", "preuve.jpg"));
+    }
+
+    @Test
+    void shouldNotAllowRefundNumberLessThanOne() {
+        assertThrows(IllegalArgumentException.class, () -> new Refund(0, 1001l, "Produit cassé", "preuve.jpg"));
+    }
+
+    @Test
+    void shouldNotAllowEmptyDescription() {
+        assertThrows(IllegalArgumentException.class, () -> new Refund(1, 1001l, "", "preuve.jpg"));
+    }
+
+    @Test
+    void shouldNotAllowEmptyPicture() {
+        assertThrows(IllegalArgumentException.class, () -> new Refund(1, 1001l, "Produit cassé", ""));
     }
 }

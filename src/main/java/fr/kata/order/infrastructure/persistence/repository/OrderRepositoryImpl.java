@@ -21,8 +21,8 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public List<Order> getOrdersByCustomerIdAndDate(Long customerId, Date date) {
-        List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomer(customerId);
-        return orders.stream().filter(order -> order.getDateOrder().after(date)).map(ent->entityToDomain(ent)).toList();
+        List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomerAndDateOrderAfter(customerId, date);
+        return orders.stream().map(ent->entityToDomain(ent)).toList();
     }
 
     private Order entityToDomain(OrderEntity orderEntity) {

@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Arrays;
@@ -31,10 +32,10 @@ class OrderServiceTI {
 
     @Test
     void shouldReturnOrderHistory() {
-        LocalDateTime dateTime =LocalDateTime.of(2024, 4, 18, 0, 0, 0, 0);
-        Date date =  Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant());
+        LocalDate date = LocalDate.of(2024, 4, 18);
+        Date dateOrder =  Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        var orderHistory = orderService.getOrderHistory(1000L, date);
+        var orderHistory = orderService.getOrderHistory(1000L, dateOrder);
 
         assertNotNull(orderHistory);
         assertEquals(1, orderHistory.size());

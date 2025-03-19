@@ -7,8 +7,6 @@ import fr.kata.order.domain.repository.OrderProductRepository;
 import fr.kata.order.domain.repository.RefundRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Service

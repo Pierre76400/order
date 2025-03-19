@@ -17,8 +17,6 @@ import java.util.Map;
 public class RefundCreateSteps {
 
     private Long customerId;
-    private Long orderNum;
-    private Long productNum;
 
     private String description;
     private String picture;
@@ -38,12 +36,12 @@ public class RefundCreateSteps {
     public void customerSubmitsRefundRequest(DataTable table) {
         Map<String, String> data = table.asMap(String.class, String.class);
 
-        this.orderNum = Long.parseLong(data.get("orderNum"));
-        this.productNum = Long.parseLong(data.get("productNum"));
+        long orderNum = Long.parseLong(data.get("orderNum"));
+        long productNum = Long.parseLong(data.get("productNum"));
         this.description = data.get("description");
         this.picture = data.get("picture");
 
-        refundService.createRefund(1l, orderNum, productNum, description, picture);
+        refundService.createRefund(1L, orderNum, productNum, description, picture);
     }
 
     @Then("a refund request should be created")

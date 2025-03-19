@@ -7,6 +7,8 @@ import fr.kata.order.infrastructure.persistence.entity.RefundEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @Transactional
 public class RefundRepositoryImpl implements RefundRepository {
@@ -28,7 +30,12 @@ public class RefundRepositoryImpl implements RefundRepository {
         refundEntity.setDescription(refund.getDescription());
         refundEntity.setPicture(refund.getPicture());
 
-        OrderProductEntity orderProductEntity = orderProductEntityRepository.findById(refund.getIdOrderProduct()).get();
+        Optional<OrderProductEntity> orderProduct = orderProductEntityRepository.findById(refund.getIdOrderProduct());
+
+        if (orderProduct.isEmpty()) {
+            throw new IllegalArgumentException("Order not found");
+        }
+        OrderProductEntity orderProductEntity = orderProduct.get();
         refundEntity.setOrderProductEntity(orderProductEntity);
 
         refundEntityRepository.save(refundEntity);

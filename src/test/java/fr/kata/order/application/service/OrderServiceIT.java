@@ -1,31 +1,15 @@
 package fr.kata.order.application.service;
 
-import fr.kata.order.domain.model.Customer;
-import fr.kata.order.domain.model.Order;
-import fr.kata.order.domain.model.OrderProduct;
-import fr.kata.order.domain.model.Product;
-import fr.kata.order.domain.repository.OrderRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class OrderServiceTI {
+class OrderServiceIT {
 
     @Autowired
     private OrderService orderService;

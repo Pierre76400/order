@@ -7,7 +7,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -23,7 +22,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> getOrdersByCustomerIdAndDate(Long customerId, LocalDate date) {
         List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomerAndDateOrderAfter(customerId, date);
-        return orders.stream().map(ent->entityToDomain(ent)).toList();
+        return orders.stream().map(this::entityToDomain).toList();
     }
 
     private Order entityToDomain(OrderEntity orderEntity) {
@@ -39,8 +38,6 @@ public class OrderRepositoryImpl implements OrderRepository {
                     orderProductEntity.getQuantity()))
                 .toList();
 
-        Order order = new Order(orderEntity.getNumOrder(),customer, orderEntity.getDateOrder(), orderProducts);
-
-        return order;
+        return new Order(orderEntity.getNumOrder(),customer, orderEntity.getDateOrder(), orderProducts);
     }
 }

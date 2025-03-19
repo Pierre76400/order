@@ -1,17 +1,11 @@
 package fr.kata.order.infrastructure.persistence.repository;
 
-import fr.kata.order.domain.model.Customer;
-import fr.kata.order.domain.model.Order;
 import fr.kata.order.domain.model.OrderProduct;
 import fr.kata.order.domain.model.Product;
 import fr.kata.order.domain.repository.OrderProductRepository;
-import fr.kata.order.domain.repository.OrderRepository;
-import fr.kata.order.infrastructure.persistence.entity.OrderEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Repository

@@ -10,9 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,10 +32,10 @@ class OrderServiceTest {
     @Test
     void shouldReturnOrderHistory() {
         Product product1 = new Product(1, "Cuillere", 10.0);
-        OrderProduct orderProduct1 = new OrderProduct(1l,product1, 2);
+        OrderProduct orderProduct1 = new OrderProduct(1L,product1, 2);
 
         Customer customer = new Customer(1, "John", "Doe");
-        Order order = new Order(1, customer, LocalDate.now(), Arrays.asList(orderProduct1));
+        Order order = new Order(1, customer, LocalDate.now(), List.of(orderProduct1));
 
         LocalDate date = LocalDate.of(2025, 1, 1);
         when(orderRepository.getOrdersByCustomerIdAndDate(1000L, date)).thenReturn(List.of(order));

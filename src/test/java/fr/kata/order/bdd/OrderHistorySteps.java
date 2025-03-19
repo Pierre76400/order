@@ -7,11 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import static fr.kata.order.utils.DateUtils.stringFormatFrancaisToLocalDate;
@@ -28,7 +24,7 @@ public class OrderHistorySteps {
     private OrderService orderService;
 
     @Given("customer with id {long} and date {string}")
-    public void customerWithIdAndDate(Long id, String dateStr) throws ParseException {
+    public void customerWithIdAndDate(Long id, String dateStr) {
         this.customerId = id;
         this.dateOrder = stringFormatFrancaisToLocalDate(dateStr);
     }

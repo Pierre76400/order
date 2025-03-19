@@ -26,7 +26,7 @@ class OrderEntityRepositoryTest {
 
         Date dateOrder =  Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomerAndDateOrderAfter(1000l,date);
+        List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomerAndDateOrderAfter(1000L,date);
 
         assertNotNull(orders);
         assertEquals(2,orders.size());

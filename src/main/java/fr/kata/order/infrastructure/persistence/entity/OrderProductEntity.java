@@ -1,6 +1,5 @@
 package fr.kata.order.infrastructure.persistence.entity;
 
-import fr.kata.order.domain.model.Product;
 import jakarta.persistence.*;
 
 @Entity

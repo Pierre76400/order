@@ -23,7 +23,7 @@ public class OrderService {
         }
 
         return orderRepository.getOrdersByCustomerIdAndDate(customerId, date).stream()
-                .map(order -> mapToDto(order))
+                .map(OrderService::mapToDto)
                 .toList();
     }
 

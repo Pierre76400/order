@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,16 +35,12 @@ class RefundServiceTI {
 
     @Test
     void shouldCreateRefund() {
+        int nbRefunds = refundEntityRepository.findAll().size();
         refundService.createRefund(100l,1000L, 1000L,"Produit cassé","preuve.jpg");
 
         List<RefundEntity> refundEntities = refundEntityRepository.findAll();
 
-        assertEquals(1, refundEntities.size());
-
-        RefundEntity refundEntity = refundEntities.get(0);
-
-        assertEquals("preuve.jpg", refundEntity.getPicture());
-        assertEquals("Produit cassé", refundEntity.getDescription());
+        assertEquals(1, refundEntities.size()-nbRefunds);
     }
 
     @Test

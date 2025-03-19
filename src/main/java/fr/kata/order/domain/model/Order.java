@@ -1,5 +1,6 @@
 package fr.kata.order.domain.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -8,11 +9,11 @@ public class Order {
 
     private Customer customer;
 
-    private Date dateOrder;
+    private LocalDate dateOrder;
 
     private List<OrderProduct> orderProducts;
 
-    public Order(long numOrder, Customer customer, Date dateOrder, List<OrderProduct> orderProducts) {
+    public Order(long numOrder, Customer customer, LocalDate dateOrder, List<OrderProduct> orderProducts) {
         this.numOrder = numOrder;
         this.customer = customer;
         this.dateOrder = dateOrder;
@@ -43,7 +44,7 @@ public class Order {
         return customer;
     }
 
-    public Date getDateOrder() {
+    public LocalDate getDateOrder() {
         return dateOrder;
     }
 

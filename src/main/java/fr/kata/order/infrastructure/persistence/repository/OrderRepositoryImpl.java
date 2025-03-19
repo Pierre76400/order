@@ -6,6 +6,7 @@ import fr.kata.order.infrastructure.persistence.entity.OrderEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public List<Order> getOrdersByCustomerIdAndDate(Long customerId, Date date) {
+    public List<Order> getOrdersByCustomerIdAndDate(Long customerId, LocalDate date) {
         List<OrderEntity> orders = orderRepository.findByCustomerEntity_idCustomerAndDateOrderAfter(customerId, date);
         return orders.stream().map(ent->entityToDomain(ent)).toList();
     }

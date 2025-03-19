@@ -2,9 +2,9 @@ package fr.kata.order.domain.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +16,7 @@ class OrderTest {
         OrderProduct orderProduct1 = new OrderProduct(1l,product1, 2);
 
         Customer customer = new Customer(1, "John", "Doe");
-        Order order = new Order(1, customer, new Date(), Arrays.asList(orderProduct1));
+        Order order = new Order(1, customer, LocalDate.now(), Arrays.asList(orderProduct1));
 
         assertEquals(1, order.getNumOrder());
         assertEquals(customer, order.getCustomer());
@@ -25,7 +25,7 @@ class OrderTest {
 
     @Test
     void shouldNotAllowNullCustomer() {
-        assertThrows(IllegalArgumentException.class, () -> new Order(1, null, new Date(), new ArrayList<>()));
+        assertThrows(IllegalArgumentException.class, () -> new Order(1, null, LocalDate.now(), new ArrayList<>()));
     }
 
     @Test
@@ -37,7 +37,7 @@ class OrderTest {
     @Test
     void shouldNotAllowEmptyOrderProducts() {
         Customer customer = new Customer(1, "John", "Doe");
-        assertThrows(IllegalArgumentException.class, () -> new Order(1, customer, new Date(), new ArrayList<>()));
+        assertThrows(IllegalArgumentException.class, () -> new Order(1, customer, LocalDate.now(), new ArrayList<>()));
     }
 
     @Test
@@ -50,7 +50,7 @@ class OrderTest {
 
         Customer customer = new Customer(1, "John", "Doe");
 
-        Order order = new Order(1, customer, new Date(), Arrays.asList(orderProduct1, orderProduct2));
+        Order order = new Order(1, customer, LocalDate.now(), Arrays.asList(orderProduct1, orderProduct2));
 
 
         assertEquals(40.0, order.getTotalPrice());

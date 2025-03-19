@@ -9,15 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+import static fr.kata.order.utils.DateUtils.stringFormatFrancaisToLocalDate;
 import static org.junit.Assert.assertTrue;
 
 public class OrderHistorySteps {
 
     private Long customerId;
-    private Date dateOrder;
+    private LocalDate dateOrder;
 
     private List<OrderDto> orderHistory;
 
@@ -27,11 +30,7 @@ public class OrderHistorySteps {
     @Given("customer with id {long} and date {string}")
     public void customerWithIdAndDate(Long id, String dateStr) throws ParseException {
         this.customerId = id;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        this.dateOrder = dateFormat.parse(dateStr);
-
-
-        System.out.println("Client ID: " + id + ", Date: " + dateOrder);
+        this.dateOrder = stringFormatFrancaisToLocalDate(dateStr);
     }
 
     @When("the customer requests their order history")

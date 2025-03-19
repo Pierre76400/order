@@ -5,19 +5,20 @@ import fr.kata.order.domain.model.Order;
 import fr.kata.order.domain.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class OrderService {
 
+    public static final int NB_YEARS_HISTORY_AUTHORIZE = 1;
     private OrderRepository orderRepository;
 
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
-    public List<OrderDto> getOrderHistory(Long customerId, Date date){
-        if(date.before(new Date(new Date().getYear() - 1, new Date().getMonth(), new Date().getDay()))){
+    public List<OrderDto> getOrderHistory(Long customerId, LocalDate date){
+        if(date.isBefore(LocalDate.now().minusYears(NB_YEARS_HISTORY_AUTHORIZE))){
             throw new IllegalArgumentException("Date should not be more than one year");
         }
 

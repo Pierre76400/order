@@ -33,9 +33,9 @@ class OrderControllerTest {
     void shouldReturnOrderHistory() {
         long customerId = 1L;
         LocalDate orderDate = LocalDate.now();
-        Date date = Date.from(orderDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
         List<OrderDto> orders = List.of(new OrderDto());
-        when(orderService.getOrderHistory(customerId, date)).thenReturn(orders);
+
+        when(orderService.getOrderHistory(customerId, orderDate)).thenReturn(orders);
 
         ResponseEntity<List<OrderDto>> response = orderController.getOrderHistory(customerId, orderDate);
 

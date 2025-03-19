@@ -2,6 +2,7 @@ package fr.kata.order.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class OrderEntity {
     @ManyToOne
     private CustomerEntity customerEntity;
 
-    private Date dateOrder;
+    private LocalDate dateOrder;
 
     @OneToMany(mappedBy = "orderEntity")
     private List<OrderProductEntity> orderProductsEntities;
@@ -46,11 +47,11 @@ public class OrderEntity {
         this.customerEntity = customerEntity;
     }
 
-    public Date getDateOrder() {
+    public LocalDate getDateOrder() {
         return dateOrder;
     }
 
-    public void setDateOrder(Date dateOrder) {
+    public void setDateOrder(LocalDate dateOrder) {
         this.dateOrder = dateOrder;
     }
 

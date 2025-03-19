@@ -33,9 +33,8 @@ class OrderServiceTI {
     @Test
     void shouldReturnOrderHistory() {
         LocalDate date = LocalDate.of(2024, 4, 18);
-        Date dateOrder =  Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-        var orderHistory = orderService.getOrderHistory(1000L, dateOrder);
+        var orderHistory = orderService.getOrderHistory(1000L, date);
 
         assertNotNull(orderHistory);
         assertEquals(1, orderHistory.size());
@@ -43,7 +42,7 @@ class OrderServiceTI {
 
     @Test
     void shouldNotAllowOrderHistoryMoreThanOneYear() {
-        assertThrows(IllegalArgumentException.class, () ->  orderService.getOrderHistory(1000L, new Date(20, 1, 1)));
+        assertThrows(IllegalArgumentException.class, () ->  orderService.getOrderHistory(1000L, LocalDate.of(2019, 4, 18)));
     }
 
 }

@@ -29,8 +29,7 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<List<OrderDto>> getOrderHistory(@RequestParam long customerId,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate orderDate) {
-        Date date = Date.from(orderDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        List<OrderDto> orders = orderService.getOrderHistory(customerId, date);
+        List<OrderDto> orders = orderService.getOrderHistory(customerId, orderDate);
         return ResponseEntity.ok(orders);
     }
 }
